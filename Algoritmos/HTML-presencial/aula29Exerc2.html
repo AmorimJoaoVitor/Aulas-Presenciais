@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 29 exerc1</title>
+</head>
+
+<body>
+    <input id="in_cont" placeholder="Digite a quantidade de repetições" type="number"><br>
+    <input type="text" id="in_frase">
+    <button onclick="filosofar()">Filosofar</button>
+    <div id="div_msg"></div>
+</body>
+
+</html>
+<script>
+    function filosofar() {
+        div_msg.innerHTML = "";
+        var quantidade = Number(in_cont.value);
+        if (quantidade <= 0) {
+            alert('Quantidade inválida, digite outra');
+        } else if (in_frase.value == "") {
+            alert('Cadê a frase?');
+        } else {
+            for (var contagem = 0; contagem < quantidade; contagem++) {
+                div_msg.innerHTML += "Penso, logo existo";
+            }
+        }
+    }
+</script>
+
+<!-- 3. Faça uma versão melhorada do programa anterior no qual:
+a) O usuário informa a quantidade de vezes que quer que a frase repita
+b) Se a quantidade não for informada ou se for menor que 0, exiba um alert "Quantidade inválida" e, claro, não exiba a frase na tela -->

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 6</title>
+</head>
+
+<body>
+    <input placeholder="Qual o valor do carro" type="text" id="in_valor_carro">
+    <input placeholder="Quantas parcelas" type="text" id="in_parcelas_carro"><br>
+    <button onclick="simular()">Ver parcelas</button>
+    <div id="div_resultado"></div>
+
+</body>
+
+</html>
+
+<script>
+    function simular() {
+        div_resultado.innerHTML = "";
+
+        var valor_carro = Number(in_valor_carro.value);
+        var parcelas = Number(in_parcelas_carro.value);
+
+        if (in_valor_carro.value == "" || valor_carro < 1000) {
+            alert('Valor do carro inválido');
+        } else if (parcelas < 6) {
+            alert('Parcelas inválidas');
+        }
+        else {
+
+            var valor_parcela = valor_carro / parcelas;
+            for (var parcela = 1; parcela <= parcelas; parcela++) {
+                div_resultado.innerHTML += `Parcela ${parcela}: R$ ${valor_parcela.toFixed(2)}<br>`;
+
+                // aumentando a variável valor_parcela de acordo com os juros em 15%
+                valor_parcela *= 1.015;
+            }
+        }
+    }
+</script>

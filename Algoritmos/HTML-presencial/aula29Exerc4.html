@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exerc5</title>
+</head>
+<body>
+    
+    <button onclick="ver()">Ver pares</button>
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function ver(){
+        
+        for( var contagem = 0; contagem <= 100; contagem+=2)
+        div_msg.innerHTML += `${contagem} <br>`
+    }
+</script>
+<!-- 4. Crie um programa o qual:
+a) Ao clicar num botão "Ver pares", exiba na tela, um embaixo do outro, todos os inteiros pares entre 1 e 100 -->

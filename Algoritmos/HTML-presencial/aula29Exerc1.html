@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 29 exerc1</title>
+</head>
+<body>
+    <button onclick="filosofar()">Filosofar</button>
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function filosofar(){
+        div_msg.innerHTML = "";
+
+        for (var contagem = 0; contagem < 7; contagem++){
+            div_msg.innerHTML += "Penso, logo existo";
+        }
+    }
+</script>
+
+<!-- 1. Crie um programa o qual:
+a) Ao clicar num botão 'Filosofar' exibe na própria página (NÃO num alert) 7 vezes, uma embaixo da outra,
+ uma frase filosófica qualquer -->

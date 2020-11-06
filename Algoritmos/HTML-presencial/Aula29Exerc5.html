@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exerc5</title>
+</head>
+<body>
+    <input type="number" id="in_tabu">
+    <br>
+    <button onclick="ver()">Ver tabuada</button>
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function ver(){
+        var tabuada = Number(in_tabu.value);
+        
+        
+        for( var contagem = 1; contagem <= 10; contagem++)
+        div_msg.innerHTML += `${tabuada} x ${contagem} = ${tabuada * contagem}<br>`
+    }
+</script>
+
+<!-- 5. Crie um programa o qual:
+a) O usuário digita qual a tabuada que quer ver
+b) Ao clicar no botão "Ver tabuada", exibe na página a tabuada do número como no exemplo abaixo, no qual o usuário digitou "3":
+3 x 1 = 3
+...
+3 x 10 = 30 -->
