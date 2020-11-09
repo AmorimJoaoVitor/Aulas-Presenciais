@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Digite sua renda individual <input type="number" id="in_renda_in">
+    <br>
+    Digite sua renda familiar <input type="text" id="in_renda_fa"><br>
+    <button onclick="analisar()">Analisar Auxílio</button><br>
+    <div id="div_resultado">
+
+    </div>
+
+</body>
+
+</html>
+<script>
+    function analisar() {
+        var individual = Number(in_renda_in.value);
+        var familiar = Number(in_renda_fa.value);
+
+        var recebe_individual = individual <= 1200;
+        var recebe_familiar = familiar <= 2500;
+        var resultado;
+        if (recebe_individual && recebe_familiar) {
+            resultado = "Você terá direito ao auxílio";
+        }
+        else {
+            resultado = "Não receberá porque:"
+            if (!recebe_individual) {
+                resultado += "Sua renda individual te impede de receber o auxílio!"
+            }
+            if (!recebe_familiar) {
+                resultado += "Sua renda familiar te impede de receber o auxílio!"
+            }
+        }
+        div_resultado.innerHTML = resultado;
+    }
+</script>
+<!-- 1. Crie um programa em HTML/JS o qual:
+
+OBS: Use variáveis booleanas
+
+a) Solicite as renda individual e familiar do usuário para saber se ele terá direito ao auxílio emergencial do governo devido à pandemia de Covid19
+b) Ao clicar em "Analisar auxílio", exiba algumas dessas frases abaixo do botão (pode ser que mais de uma delas apareça. Nesse caso, mostre uma abaixo da outra):
+
+   "Você terá direito ao auxílio!" caso sua renda individual for até 1200 e sua renda familiar for até 2500
+   "Sua renda individual te impede de receber o auxílio!" caso sua renda individual for mais de 1200
+   "Sua renda familiar te impede de receber o auxílio!" caso sua renda familiar for mais de 2500
+
+ -->

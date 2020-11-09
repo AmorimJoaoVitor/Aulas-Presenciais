@@ -15,8 +15,11 @@
     function exibir() {
         var dias = Number(in_dias.value);
         for(var contador = 1; contador <=30; contador++){
+            if(contador % dias == 0){
+                div_msg.innerHTML += `Dia ${contador} - Musculação<br>`;    
+            }else{
             div_msg.innerHTML += `Dia ${contador} - Comer, dormir etc<br>`;
-            
+            }
         }
     }
 </script>

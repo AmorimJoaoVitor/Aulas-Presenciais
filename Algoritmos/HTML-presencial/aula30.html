@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 30 - Break</title>
+</head>
+
+<body>
+    Digite um número para que eu conte até ele: <input id="numero_limite">
+    <button onclick="contadorComWhile()">Contando com WHILE</button>
+    <button onclick="contadorComFor()">Contando com FOR</button>
+    <div id="div1"></div>
+    <hr>
+    <div id="div2"></div>
+</body>
+
+</html>
+<script>
+
+    function contadorComWhile() {
+        // ex: interrompendo um LOOP infinito
+        div1.innerHTML = '';
+        var limite = Number(numero_limite.value);
+        var contador = 0;
+        while (true) {
+            contador += 1;
+            div1.innerHTML += `Contando... ${contador} <br>`;
+            if (contador == limite) {
+                break; // SE chegar nesta instrução, o loop MORRE imediatamente
+            }
+        }
+    }
+
+    function contadorComFor() {
+        // ex: interrompendo um LOOP finito
+        div2.innerHTML = '';
+        var limite = Number(numero_limite.value);
+        for (var contador = 0; ; contador++) {
+            div2.innerHTML += `Contando... ${contador} <br>`;
+            if (contador == limite) {
+                break; // SE chegar nesta instrução, o loop MORRE imediatamente
+            }
+        }
+    }
+
+
+</script>
