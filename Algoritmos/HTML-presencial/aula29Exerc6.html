@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exer6</title>
+</head>
+<body>
+    <button onclick="ver()">Amo o escudo do meu time!</button>
+    <div id="div_time">
+    <img src="" id="time" alt="">
+</div>
+</body>
+</html>
+<script>
+    function ver() {
+        div_time.innerHTML = "";
+        for(var contagem = 0; contagem < 7; contagem++){
+            div_time.innerHTML += "<img src='corinthans.png'>"
+        }
+    }
+</script>
+<!-- 7. Crie um programa em HTML/JS o qual:
+a) Tenha um botão "Amo o escudo do meu time!"
+b) Ao clicar nele, mostre na própria página 7 vezes o mesmo escudo de um time de futebol (ou de LoL ou do esporte que quiser)
+ -->
