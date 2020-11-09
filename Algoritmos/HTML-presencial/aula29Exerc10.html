@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" placeholder="informe os elefeantes" id="in_quantidade_elefantes">
+    <br>
+    <button onclick="atazanar()">Atasanar a medium</button>
+    <br>
+    <span id="span_elefantes"></span>
+</body>
+
+</html>
+<script>
+    function atazanar() {
+        var qtd_elefantes = Number(in_quantidade_elefantes.value); // variável para a quantidade de repetições
+
+        for (var contador = 1; contador <= qtd_elefantes; contador++) { // criação do for para a primeira frase que se repete sempre
+
+            span_elefantes.innerHTML += `1 elefante incomoda muita gente!<br>`; // Frase que não muda e repete sempre
+
+            var vezes_incomodam = contador + 1; // criando a variável "vezes_incomodam" que vai ser a quantidade de vezes que incomodam, +1 porque sempre vai ser um numero acima do contador
+            var incomodam = ""; // criando a var "incomodam" que vai receber a palavra incomodam no for abaixo
+
+            for (var contador_interno = 0; contador_interno < vezes_incomodam; contador_interno++) { // criando o for que vai repetir de acordo com as vezes_incomodam. esse for tem uma nova variável que é a contador_interno
+                incomodam += "incomodam,"; // a variável incomodam, vai ter a palavra "incomodam" acrescentada toda vez que esse for se repetir
+            }
+            span_elefantes.innerHTML += `${vezes_incomodam} elefantes, ${incomodam}muito mais!<br><br>`; // Montando a frase inteira
+            //                          x elefantes, (var incomodam) muito mais!
+
+        }
+    }
+</script>
+
+<!-- 10 (desafio). No filme clássico "Ghost, do outra lado da vida", o protagonista, para atazanar a vida da médium canta a seguinte canção...
+
+1 elefante incomoda muita gente!
+2 elefantes, incomodam, incomodam, muito mais!
+
+1 elefante incomoda muita gente!
+3 elefantes, incomodam, incomodam, incomodam, muito mais!
+
+1 elefante incomoda muita gente!
+4 elefantes, incomodam, incomodam, incomodam, incomodam, muito mais!
+
+... e assim por diante
+
+Crie um programa em HTML/JS o qual:
+a) Solicite ao usuário a quantidade elefantes
+
+b) Ao clicar em "Atazanar a médium", exiba sempre o trecho da canção de 1 elefante, seguido do trecho com 2 elefantes e depois 3... até a quantidade de elefantes indicado em a). Note que a palavra "incomodam" repete-se conforme essa mesma quantidade.
+
+Por exemplo, o se o usuário informar 4 em a), devem aparacer 3 estrofes, como no enunciado da questão, de "2 elefantes" até "4 elefantes". -->

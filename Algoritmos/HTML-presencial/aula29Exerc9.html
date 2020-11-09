@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tri e penta</title>
+</head>
+<body>
+    <button onclick="verNumeros()">Curto 3 e 5</button><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function verNumeros(){
+        for (var contador = 0; contador <= 100; contador++){
+            if(contador % 3 == 0 && contador % 5 == 0){
+                div_msg.innerHTML += "É TRI! É PENTA!<br>";
+            }
+            else if(contador % 5 == 0){
+                div_msg.innerHTML += "É PENTA!<br>";
+            }
+            else if(contador % 3 == 0){
+                div_msg.innerHTML += "É TRI!<br>"; }
+            else {
+            div_msg.innerHTML += `${contador}<br>`;
+            }
+        }
+    }
+</script>
