@@ -1,22 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>exer6</title>
 </head>
+
 <body>
+    Quantos escudos deseja?
+    <input type="text" id="input_numero_escudos"><br>
+    quantos escudos por linha?
+    <input type="text" id="input_itens_linha"><br>
+    <select name="" id="lista_tamanhos">
+        <option value="50">Pequeno</option>
+        <option value=100>medio</option>
+        <option value="200">Grande</option>
+    </select><br>
+    url da imagem <input type="text" id="input_url">
     <button onclick="ver()">Amo o escudo do meu time!</button>
     <div id="div_time">
-    <img src="" id="time" alt="">
-</div>
+        <img src="" id="time" alt="">
+    </div>
 </body>
 </html>
 <script>
     function ver() {
+        var 
+        var quantidade_escudos = Number(input_numero_escudos.value);
+        var tamanho_escudos = lista_tamanhos.value;
+        var itens_linha = Number(input_itens_linha.value);
         div_time.innerHTML = "";
-        for(var contagem = 0; contagem < 7; contagem++){
-            div_time.innerHTML += "<img src='corinthans.png'>"
+        for (var contagem = 0; contagem < quantidade_escudos; contagem++) {
+            div_time.innerHTML += `<img width="${tamanho_escudos}" src='corinthans.png'>`
+           var deve_quebrar_linha = ((contagem + 1) % itens_linha == 0);
+           if (deve_quebrar_linha){
+               div_time.innerHTML += "<br>";
+           }
         }
     }
 </script>
