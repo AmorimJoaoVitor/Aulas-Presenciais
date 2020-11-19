@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 33</title>
+</head>
+<body>
+    Digite algo: <input id="in_frase" onkeyup="analisar()"><br>
+
+    <div>
+        Quantas letras? <b id="v_letras"></b><br>
+    </div>
+<div>
+    começa com a letra "A" <b id="v_comeca_a"></b>
+</div><br>
+</body>
+</html>
+<script>
+    function analisar() {
+        var frase = in_frase.value;
+
+        var quantas_letras = frase.length;
+        v_letras.innerHTML = quantas_letras;
+
+        var comeca_com_a = frase.startsWith('a' || 'A');
+        v_comeca_a.innerHTML = comeca_com_a;
+    }
+</script>

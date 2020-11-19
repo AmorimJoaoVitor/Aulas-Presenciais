@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 32</title>
+</head>
+<body>
+    <button onclick="sortear()">Sorteio!</button>
+    <button onclick="zero_dez()">Sorteio 0 a 10</button><br>
+    <button onclick="um_dez()">Sorteio 1 a 10</button><br>
+    <button onclick="cinco_nove()">Sorteio 5 a 9</button><br>
+    <button onclick="sortear_n50_p50()">Sorteio de -50 a 50</button><br>
+
+
+    <div id="div_sorteio"></div>
+</body>
+</html>
+<script>
+    function sortear(){
+
+     var sorteio = (Math.random().toFixed(4));
+     div_sorteio.innerHTML = sorteio;
+    }
+
+    function zero_dez(){
+        var sorteio = Number((Math.random() * 10).toFixed(0));
+        div_sorteio.innerHTML = sorteio;
+    }
+    function um_dez(){
+        var sorteio = parseInt(Math.random() * 10 + 1);
+        div_sorteio.innerHTML = sorteio;
+    }
+    function cinco_nove(){
+        var sorteio = parseInt( 5 + Math.random() * 5);
+        div_sorteio.innerHTML = sorteio;
+    }
+    function sortear_n50_p50(){
+        var sorteio = parseInt(Math.random() * 101 - 50);
+        div_sorteio.innerHTML = sorteio;
+    }
+</script>
