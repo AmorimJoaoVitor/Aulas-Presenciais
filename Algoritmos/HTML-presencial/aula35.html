@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 35</title>
+</head>
+
+<body>
+    <input type="text" placeholder="Informe um pais" id="in_pais">
+    <br>
+    <button onclick="cadastrar()">Cadastrar</button><br>
+
+    <button onclick="ver()">Ver destinos</button>
+    <div id="div_destinos"></div>
+</body>
+
+</html>
+<script>
+
+    //vetor paises
+
+    var paises = []
+
+    function cadastrar() {
+        var novo_pais = in_pais.value;
+        paises.push(novo_pais);
+        console.log(paises);
+    }
+    function ver() {
+        div_destinos.innerHTML = "";
+    
+    //iterando no vetor com for
+       for (var posicao = 0; posicao < paises.length; posicao++){
+           var atual = paises[posicao];
+           if(posicao % 2 == 0){
+               div_destinos.innerHTML += `${atual}<br>`;
+            } 
+            else {
+              div_destinos.innerHTML += `<b>${atual}</b><br>`;
+                
+            }
+       }
+
+
+
+    }
+</script>

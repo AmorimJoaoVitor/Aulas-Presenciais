@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 34</title>
+</head>
+
+<body>
+    <input type="text" id="in_fruta" placeholder="Cadastre uma fruta">
+    <button onclick="cadastrar()">Cadastrar fruta</button>
+    primeira cadastrada: <b id="b_primeira">Ainda não tem</b><br>
+    ultima cadastrada: <b id="b_ultima">Ainda não tem</b><br>
+    terceira cadastrada <b id="b_terceira">Ainda não tem</b><br>
+
+    total a pagar (cada fruta custa 2,50): R$<b id="b_total"></b>
+    <div id="div_frase"></div>
+
+</body>
+
+</html>
+<script>
+    var total;
+    // vetor/ array(em inglês)
+    var frutas = [];
+
+    function cadastrar() {
+        var nova_fruta = in_fruta.value;
+        // .push() -> insere um elemento no vetor
+        frutas.push(nova_fruta);
+        console.log(frutas);
+
+        b_primeira.innerHTML = frutas[0];
+        b_ultima.innerHTML = frutas[frutas.length - 1];
+        if (frutas.length >= 3) {
+            b_terceira.innerHTML = frutas[2];
+        }
+
+        total = frutas.length * 2.50;
+
+
+        if (frutas.length >= 5 && frutas.length < 10) {
+            total -= 1;
+        }
+        else if (frutas.length >= 10) {
+            total -= 3;
+        }
+
+        if(frutas.length % 4 == 0){
+            div_frase.innerHTML = "Nossa você come fruta hein!"
+        }
+        else {
+            div_frase.innerHTML = "";
+        }
+        b_total.innerHTML = total;
+
+    }
+</script>
