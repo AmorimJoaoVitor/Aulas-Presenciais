@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exerc4</title>
+</head>
+
+<body>
+    <input type="text" placeholder="Cadastre um aluno" id="in_alunos"><br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <div id="div_msg"></div>
+</body>
+
+</html>
+<script>
+    var alunos = [];
+    function cadastrar() {
+        div_msg.innerHTML = "";
+        var AlunoDigitado = in_alunos.value;
+        alunos.push(AlunoDigitado);
+        
+        for(var i = 1; i <= alunos.length; i++){
+            div_msg.innerHTML += `${alunos[alunos.length - i]}<br>`;
+        }
+        
+
+    }
+</script>
+</body>
+
+</html>
+<!-- 5. Crie um programa no qual o usuário vai cadastrando nomes de alunos.
+
+Porém, na medida que vai cadastrando, ele vai aparecendo um abaixo do outro na ordem inversa em que foram cadastrados (ou seja, o último sempre fica no topo, o penúltimo em abaixo dele e assim por diante). -->

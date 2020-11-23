@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exerc6</title>
+</head>
+<body>
+    <input type="text" placeholder="Cadastre um aluno" id="in_alunos"><br>
+    <button onclick="cadastrar()">cadastrar</button>
+    <br>
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    var alunos = ['Pedro', 'Caio', 'João', 'Patati', 'Patata']
+
+    function cadastrar(){
+        div_msg.innerHTML = "";
+       alunos.push(in_alunos.value);
+    for(var posicao = 0; posicao < alunos.length;posicao++){
+        var atual = alunos[posicao];
+        div_msg.innerHTML += `${atual}<br>`;
+    }
+    }
+     
+</script>
