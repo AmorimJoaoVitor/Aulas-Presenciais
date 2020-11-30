@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saldo bancario</title>
+</head>
+
+<body>
+    Saldo: R$<b id="b_saldo"></b><br>
+    Depósitos <b id="b_depositos"></b><br>
+    Saques: <b id="b_saques"></b><br>
+
+    <button onclick="deposito()">Depositar 100</button>
+    <button onclick="saque()"> Sacar 20</button>
+</body>
+
+</html>
+
+<script>
+    var conta = {
+        saldo: 0,
+        depositos: 0,
+        saques: 0
+    };
+
+    // b_saldo.innerHTML = conta.saldo;
+    // b_depositos.innerHTML = conta.depositos;
+
+    function deposito() {
+        conta.saldo += 100;
+        conta.depositos++;
+
+        b_saldo.innerHTML = conta.saldo;
+        b_depositos.innerHTML = conta.depositos;
+
+    }
+
+    function saque(){
+        conta.saldo -= 20;
+        conta.saques++;
+
+        b_saldo.innerHTML = conta.saldo;
+        b_saques.innerHTML = conta.saques;
+    }
+</script>
+<!-- 5. Crie um programa que simule o uso de uma conta Poupança de banco do usuário.
+Ela deve ter as seguintes informações na tela:
+    Saldo: R$ 0.00
+    Depósitos: 0
+    Saques: 0
+Abaixo dessas informações, devem haver os botões: "Depositar 100" e "Sacar 20".
+Ao clicar no primeiro botão, o saldo na tela atualiza aumentando em 100 e o número de depósitos aumenta em 1.
+Ao clicar no segundo botão, o saldo na tela atualiza reduzindo em 20 e o número de saques aumenta em 1.
+
+É possível que o saldo fique negativo (azar do usuário ser gastador, né?). -->

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 4</title>
+</head>
+
+<body>
+    <input type="text" placeholder="Consulte o CEP" id="in_cep"><br>
+    <button onclick="pesquisar()">Consulta</button><br>
+    <div id="div_msg"></div>
+
+</body>
+
+</html>
+<script>
+    var endereco1 = {
+        cep: "04301-000",
+        end_completo: "Rua projetada",
+        apelido: "apartamento"
+    };
+
+    var endereco2 = {
+        cep: "04849-334",
+        end_completo: "Rua 19 de fevereiro",
+        apelido: "Casa"
+    }
+
+    function pesquisar(){
+        var cons_cep = in_cep.value;
+
+        if(cons_cep == endereco1.cep){
+        div_msg.innerHTML = `
+        Endereço: ${endereco1.apelido}: ${endereco1.end_completo}, cep: ${endereco1.cep}
+        `;
+        }
+        else if (cons_cep == endereco2.cep){
+            div_msg.innerHTML = `
+        Endereço: ${endereco2.apelido}: ${endereco2.end_completo}, cep: ${endereco2.cep}
+        `;
+        }
+    }
+
+</script>
+<!-- 4. Crie um programa que possui 2 endereços já cadastrados. Nesses endereços constam o cep, o endereço completo e o apelido. Ex: cep: 04301-000, end_completo: 'Av Xyz, 100. Ap 10', apelido: 'casa'
+O usuário não vê esses endereços em lugar nenhum, mas pode pesquisar eles digitando um cep e clicando num botão "Pesquisar". Ao clicar nesse botão:
+CASO o cep seja um dos 2 cadastrados, exiba a frase:
+   Endereço APELIDO: ENDEREÇO_COMPLETO, cep: CEP
+CASO o cep não seja nenhum dos cadastrados:
+  Cep não encontrado!
+ -->

@@ -1,27 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exerc6</title>
 </head>
+
 <body>
     <input type="text" placeholder="Cadastre um aluno" id="in_alunos"><br>
-    <button onclick="cadastrar()">cadastrar</button>
+    <button onclick="cadastrar()">cadastrar/pesquisar</button>
     <br>
     <div id="div_msg"></div>
 </body>
+
 </html>
 <script>
     var alunos = ['Pedro', 'Caio', 'João', 'Patati', 'Patata']
 
-    function cadastrar(){
+    function cadastrar() {
         div_msg.innerHTML = "";
-       alunos.push(in_alunos.value);
-    for(var posicao = 0; posicao < alunos.length;posicao++){
-        var atual = alunos[posicao];
-        div_msg.innerHTML += `${atual}<br>`;
+        var existe = false;
+        var novo_aluno = in_alunos.value;
+
+        for (var posicao = 0; posicao < alunos.length; posicao++) {
+            var atual = alunos[posicao];
+            div_msg.innerHTML += `${atual}<br>`;
+            if (alunos[posicao] == novo_aluno) {
+                existe = true;
+                alert(`O Aluno ${alunos[posicao]} já existe`);
+            }
+        }
+        if (existe == false) {
+            alunos.push(novo_aluno);
+
+        }
+        console.log(alunos);
     }
-    }
-     
+
 </script>
+<!-- 6. Crie um programa em HTML/JS em que:
+
+a) Tenha uma lista de alunos e um botão para cadastrar novos (mostre como a lista está a cada novo aluno inserido).
+
+b) Ao tentar inserir um aluno, verifique se já não existe na lista - caso exista, não insira-o.
+
+c) Tenha um campo para pesquisar alunos, onde o usuário possa verificar se o aluno em questão já existe (se existir, exiba um alert com a frase "O aluno X já existe na lista").
+
+*Obs o campo para pesquisar alunos pode ser o mesmo para inserir novos. -->

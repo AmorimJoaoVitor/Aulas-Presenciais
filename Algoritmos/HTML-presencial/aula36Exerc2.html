@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula36- times</title>
+</head>
+
+<body>
+    <input type="text" placeholder="Nome time1" id="in_nome1">
+    <input type="text" placeholder="Vitorias time 1" id="in_vitorias1">
+    <input type="text" placeholder="Empates time 1" id="in_empates1">
+    <input type="text" placeholder="derrotas time 1" id="in_derrotas1">
+
+    <br>
+
+    <input type="text" placeholder="Nome time2" id="in_nome2">
+    <input type="text" placeholder="Vitorias time 2" id="in_vitorias2">
+    <input type="text" placeholder="Empates time 2" id="in_empates2">
+    <input type="text" placeholder="derrotas time 2" id="in_derrotas2">
+
+    <br>
+
+    <button onclick="analisar()">Analisar Campanha</button>
+    <div id="div_resultado"></div>
+
+</body>
+
+</html>
+<script>
+    function analisar() {
+        // Criando um JSON chamado time1
+        var time1 = {
+            nome: in_nome1.value,
+            vitorias: in_vitorias1.value,
+            empates: in_empates1.value,
+            derrotas: in_derrotas1.value,
+        };
+        // incluindo uma nova prorpiedade
+        time1.pontos = (time1.vitorias * 3) + (time1.empates * 1)
+
+        var time2 = {
+            nome: in_nome2.value,
+            vitorias: in_vitorias2.value,
+            empates: in_empates2.value,
+            derrotas: in_derrotas2.value,
+        };
+
+        time2.pontos = (time2.vitorias * 3) + (time2.empates * 1)
+
+        // Exibindo os valores do JSON
+        div_resultado.innerHTML = `
+        O time ${time1.nome} terminou o campeonato com: ${time1.pontos} pts<br>
+        O time ${time2.nome} terminou o campeonato com: ${time2.pontos} pts `;
+    }
+</script>
+<!-- 2. Crie um programa no qual informe os nomes do times, quantas vitórias, quantos empates e quantas derrotas 2 times de futebol possuem no campeonato. Após clicar num botão "Comparar campanhas", exiba uma frase como esta:
+      O time A terminou o campeonato com AX pontos
+      O time B terminou o campeonato com BX pontos
+Onde o X de cada time é calculado assim:
+Vitória: 3 pontos
+Empate: 1 ponto
+Derrota: 0 pontos -->

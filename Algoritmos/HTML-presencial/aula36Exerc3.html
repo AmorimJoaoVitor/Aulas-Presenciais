@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula36- times</title>
+</head>
+
+<body>
+    <input type="text" placeholder= "Nome pais" id="in_nome">
+    <input type="text" placeholder="Quantos ouros" id="in_ouro">
+    <input type="text" placeholder="Quantas pratas" id="in_prata">
+    <input type="text" placeholder="Quantos bronzes" id="in_bronze">
+
+    <br>
+
+    <button onclick="analisar()">Analisar Campanha</button>
+    <div id="div_resultado"></div>
+
+</body>
+
+</html>
+<script>
+    function analisar() {
+        // Criando um JSON chamado time1
+        var pais = {
+            nome: in_nome.value,
+            ouro: in_ouro.value,
+            prata: in_prata.value,
+            bronze: in_bronze.value,
+            //pontos: pais.ouro * 10000 + pais.prata * 100 + (pais.bronze * 1)
+        };
+        // incluindo uma nova prorpiedade
+        pais.pontos = (pais.ouro * 10000) + (pais.prata * 100) + (pais.bronze * 1);
+
+        // Exibindo os valores do JSON
+        div_resultado.innerHTML = `
+        O pais ${pais.nome} tem: ${pais.pontos} pontos até agora <br>`;
+    }
+</script>
+<!-- 3. Crie um programa no qual você informa quantas medalhas de ouro, prata e bronze um país já ganhou na olimpíada. Após clicar num botão "Analisar medalhas", exiba uma frase como esta:
+      O país tem X pontos até agora
+Onde X é calculado assim:
+Medalha de ouro: 10000 pontos
+Medalha de prata: 100 pontos
+Medalha de bronze: 1 ponto -->
