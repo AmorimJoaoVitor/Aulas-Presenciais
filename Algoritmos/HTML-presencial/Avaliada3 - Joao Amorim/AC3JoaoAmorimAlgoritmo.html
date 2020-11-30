@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continuada3 - comunismo</title>
+</head>
+
+<body>
+    <input type="text" placeholder="Cadastre um país" id="in_pais"><br>
+    <input type="text" id="in_populacao" placeholder="Quanto de população"><br>
+    <input type="text" placeholder="Grau de liberdade econômica" id="in_liberdade"><br>
+    <button onclick="cadastrar()">Cadastrar</button><br>
+    <button onclick="analisar()">Analisar</button>
+    <div id="div_resultado"></div>
+</body>
+
+</html>
+<script>
+
+    var paises = [];
+
+    function cadastrar() {
+        var carac_paises = {
+            nome: in_pais.value,
+            populacao: Number(in_populacao.value),
+            liberdade: Number(in_liberdade.value)
+
+        }
+        if (carac_paises.populacao < 1000 || (carac_paises.liberdade < 0 || carac_paises.liberdade > 100)) {
+            alert('Valores inválidos');
+        }
+        else {
+
+            if (carac_paises.liberdade > 80 && carac_paises.liberdade <= 100) {
+                carac_paises.grupo = 'livre';
+                carac_paises.idh = 0.85;
+                carac_paises.desemprego = 5;
+                carac_paises.emprego = carac_paises.populacao * 0.05;
+                carac_paises.img = 'cara-livre.jpg'
+            }
+            else if (carac_paises.liberdade > 70 && carac_paises.liberdade <= 80) {
+                carac_paises.grupo = 'Quase livre';
+                carac_paises.idh = 0.77;
+                carac_paises.desemprego = 7;
+                carac_paises.emprego = carac_paises.populacao * 0.07;
+                carac_paises.img = 'cara-quase-livre.png'
+            }
+            else if (carac_paises.liberdade > 60 && carac_paises.liberdade <= 70) {
+                carac_paises.grupo = 'Moderadamente livre';
+                carac_paises.idh = 0.74;
+                carac_paises.desemprego = 8;
+                carac_paises.emprego = carac_paises.populacao * 0.08;
+                carac_paises.img = 'cara-moderadamente-livre.jpg';
+            }
+            else if (carac_paises.liberdade > 50 && carac_paises.liberdade <= 60) {
+                carac_paises.grupo = "Quase reprimido";
+                carac_paises.idh = 0.65;
+                carac_paises.desemprego = 15;
+                carac_paises.emprego = carac_paises.populacao * 0.15;
+                carac_paises.img = 'cara-quase-reprimido.jpg'
+            }
+            else {
+                carac_paises.grupo = 'Reprimido';
+                carac_paises.idh = 0.60;
+                carac_paises.desemprego = 22;
+                carac_paises.emprego = carac_paises.populacao * 0.22;
+                carac_paises.img = 'cara-reprimido.jpeg'
+            }
+
+            paises.push(carac_paises);
+            console.log(paises);
+        }
+
+
+    }
+
+    function analisar() {
+        div_resultado.innerHTML = "";
+        for (var contador = 0; contador < paises.length; contador++) {
+
+            div_resultado.innerHTML += `
+            País ${contador + 1}: <b>${paises[contador].nome}</b><br>
+            Categoria: <b>${paises[contador].grupo}</b><br>
+            Habitantes: <b>${paises[contador].populacao}</b><br>
+            IDH médio provável: <b>${paises[contador].idh}</b><br>
+            Desemprego médio provável: <b>${paises[contador].desemprego}</b>, <br>
+            Ou seja, talvez <b>${paises[contador].emprego}</b> estejam sem emprego.<br>
+            <img src="${paises[contador].img}"><br>
+            <br><br>
+            
+            `;
+        }
+    }
+
+
+
+</script>
