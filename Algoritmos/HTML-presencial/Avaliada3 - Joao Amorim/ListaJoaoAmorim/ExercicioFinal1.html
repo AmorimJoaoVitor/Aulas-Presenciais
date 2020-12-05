@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto</title>
+</head>
+
+<body>
+    Digite o nome do projeto que você fez <input type="text" id="in_projetos"><br>
+    <button onclick="registrar()">Registrar</button><br>
+    <div id="div_resultado"></div>
+
+</body>
+
+</html>
+<script>
+    var projetos = [];
+
+    function registrar() {
+        projetos.push(in_projetos.value);
+        var frase = `Você ja fez ${projetos.length} projetos `;
+
+            if(projetos.length > 0 && projetos.length <= 4){
+                frase += "por isso você é um profissional júnior";
+            }
+            else if(projetos.length >= 5 && projetos.length <= 12){
+                frase += `por isso você é um profissional pleno desde o projeto ${projetos[4]}`;
+            }
+            else if(projetos.length >= 13){
+                frase += `por isso você é um profissional senior desde o projeto ${projetos[12]}`;
+            }
+        
+
+        div_resultado.innerHTML = frase;
+    }
+</script>
+<!-- 1. Pergunte para o usuário o nome de cada projeto que já criou na vida. Ele digita e clica em "Registrar projeto". Na medida que ele vai cadastrando, verifique quantos projetos já foram cadastrados e exiba o seguinte texto abaixo:
+    Você já fez X projetos. Por isso você é um profissional Z.
+X é a quantidade de projetos e Z é seu nivel de experiência, segundo estas regras:
+  0 a 4: Júnior
+  5 a 12: Pleno desde o projeto "nome do 5º projeto"
+  13 ou mais: Sênior desde o projeto "nome do 13º projeto" -->

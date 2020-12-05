@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exerc3</title>
+</head>
+
+<body>
+    Quem entrou no elevador?<select name="" id="in_pessoa">
+        <option value=""></option>
+        <option value="homem">Homem</option>
+        <option value="mulher">Mulher</option>
+        <option value="crianca">Criança</option>
+    </select><br>
+    <button onclick="entrar()">Entrar no elevador</button>
+    <button onclick="ver()">Ver elevador</button><br>
+    <div id="div_resultado">
+
+        <img src="" id="img_pessoa" alt="">
+    </div>
+
+    <p id="p_frase"></p>
+</body>
+
+</html>
+
+<script>
+    var pessoas = [];
+
+    function entrar() {
+        pessoas.push(in_pessoa.value);
+        console.log(pessoas);
+    }
+
+    function ver() {
+        div_resultado.innerHTML = "";
+        for (var posicao = 0; posicao < pessoas.length; posicao++) {
+            var atual = pessoas[posicao]
+
+            if (atual == "homem") {
+                div_resultado.innerHTML += "<img src='homem.jpg'>";
+            }
+            else if (atual == "mulher") {
+                div_resultado.innerHTML += "<img src='mulher.jpg'>";
+            }
+            else {
+                div_resultado.innerHTML += "<img src='crianca.jpg'>";
+            }
+        }
+        p_frase.innerHTML = `A 1º pessoa foi um(a) <b>${pessoas[0]}</b> <br>
+                                A 4º pessoa foi um(a) <b>${pessoas[3]}</b> <br>
+                                a 7º pessoa foi um(a) <b>${pessoas[6]}</b> <br>
+                                A última pessoa foi um? <b>${pessoas[pessoas.length - 1]}</b>`;
+    }
+</script>
+
+<!-- 3 (desafio). Crie uma tela com uma combo SOMENTE com os itens:
+    Homem
+    Mulher
+    Criança
+Abaixo dessa combo, crie um botão "Entrar no elevador", o qual vai "registrar" em algum lugar o que estava na combo.
+Deve haver um outro botão "Ver elevador". Ao clicar nele, exiba X imagens ou ícones de homens, Y de mulheres e Z de crianças, conforme a quantidade cadastrada de cada um.
+Exiba ainda o seguinte texto:
+   A 1ª pessoa foi um(a) ? (Homem, mulher ou criança)
+   A 4ª pessoa foi um(a) ? (Homem, mulher ou criança)
+   A 7ª pessoa foi um(a) ? (Homem, mulher ou criança)
+   A última pessoa foi um(a) ? (Homem, mulher ou criança)
+Caso não tenham entrado 4 pessoa no elevador, não exiba as 2ª e 3ª frases. Caso não tenham entrado 7 pessoas, não exiba a 3ª frase. -->

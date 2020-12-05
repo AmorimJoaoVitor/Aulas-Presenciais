@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exerciocio2</title>
+</head>
+
+<body>
+
+    Cadastre um endereço <input placeholder="cep" type="text" id="in_cep"><br>
+    <input type="text" placeholder="nome da rua" id="in_nome_rua"><br>
+    <input type="text" placeholder="apelido" id="in_apelido"><br>
+    <button onclick="cadastrar()">Cadastrar CEP</button><br>
+    <button onclick="pesquisar()">Pesquisar</button><br>
+    <div id="div_resultado1"></div>
+    <div id="div_resultado2"></div>
+
+
+</body>
+
+</html>
+<script>
+    var enderecos = [];
+
+    function cadastrar() {
+        var carac_enderecos = {
+            cep: in_cep.value,
+            rua: in_nome_rua.value,
+            apelido: in_apelido.value
+        };
+        enderecos.push(carac_enderecos);
+        console.log(enderecos);
+
+        div_resultado1.innerHTML = `${enderecos.length} CEPs cadastrados até agora`;
+
+    }
+
+    function pesquisar() {
+
+        var consulta_cep = in_cep.value;
+        for (var posicao = 0; posicao < enderecos.length; posicao++) {
+
+            if (consulta_cep == enderecos[posicao].cep) {
+                div_resultado2.innerHTML = ` Endereço ${enderecos[posicao].apelido}: ${enderecos[posicao].rua}, cep: ${enderecos[posicao].cep}<br> `;
+            }
+            else {
+                div_resultado2.innerHTML = "CEP não encontrado";
+            }
+        }
+
+    }
+</script>
+<!-- 2 (desafio). Crie um programa que cadastrada e pesquisa CEP de endereços. Pergunte ao usuário cep, o endereço completo e o apelido. Ao clicar em "Cadastrar CEP" esse endereço fica armazenado em algum lugar. Ex: cep: 04301-000, end_completo: 'Av Xyz, 100. Ap 10', apelido: 'casa'.
+
+Após cada cadastro, exiba abaixo a frase
+   X CEPs cadastrados até agora.
+
+O usuário não vê esses endereços em lugar nenhum, mas pode pesquisar eles digitando um cep e clicando num botão "Pesquisar". Ao clicar nesse botão:
+CASO o cep seja um dos cadastrados, exiba a frase:
+   Endereço APELIDO: ENDEREÇO_COMPLETO, cep: CEP
+CASO o cep não seja nenhum dos cadastrados:
+  Cep não encontrado!
+
+#ficadica: Use um vetor de JSONs -->

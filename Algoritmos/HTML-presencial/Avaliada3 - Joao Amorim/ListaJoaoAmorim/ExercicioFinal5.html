@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exerc5</title>
+</head>
+<body>
+    <input type="text" placeholder="Informe um número" id="in_numero"><br>
+    <button onclick="cadastrar()">Cadastrar</button><br>
+    <button onclick="ver()">Exibir Todos</button><br>
+    <ol id="lista_numeros"></ol>
+    <div id="div_resultado"></div>
+</body>
+</html>
+<script>
+var numeros = [];
+
+function cadastrar(){
+    numeros.push(in_numero.value);
+    console.log(numeros);
+
+}
+
+function ver() {
+    lista_numeros.innerHTML = "";
+
+    var maximo = numeros[0];
+    var minimo = numeros[0];
+
+    for(var posicao = 0; posicao < numeros.length; posicao++){
+        var atual = numeros[posicao];
+        lista_numeros.innerHTML += atual;
+
+        if(atual > maximo){
+            maximo = atual;
+        }
+        else if(atual < minimo){
+            minimo = atual;
+        }
+    }
+    div_resultado.innerHTML = `O maior número cadastrado foi : ${maximo}<br>
+    O menor número cadastrado foi: ${minimo}`;
+}
+</script>
+<!-- 5. Crie um programa no qual o usuário informa um número e clica em "Cadastrar" quantas vezes quiser. Abaixo, deve haver um botão "Exibir todos", que mostra todos os números cadastrados, um abaixo do outro numa lista ordenada (tags <ol> e <li>). Abaixo da lista, exiba:
+    O maior número cadastrado foi: X
+    O menor número cadastrado foi: Y
+Onde X foi o maior dentre os números cadastrados e  Y foi o menor (NÃO confunda com "primeiro" e "último", não é isso!) -->
