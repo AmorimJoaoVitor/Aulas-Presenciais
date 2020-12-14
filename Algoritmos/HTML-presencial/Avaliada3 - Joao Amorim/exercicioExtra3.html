@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exerc3</title>
+</head>
+
+<body>
+    <input type="text" placeholder="cadastre um número" id="in_numero"><br>
+    <select name="" id="in_busca">
+        <option value="completa">Busca completa</option>
+        <option value="primeiro">Busca first</option>
+    </select><br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="buscar()">Buscar número</button>
+
+    <div id="div_msg"></div>
+</body>
+
+</html>
+<script>
+    var numeros = [];
+
+    function cadastrar(){
+        numeros.push(in_numero.value);
+        console.log(numeros);
+    }
+
+    function buscar(){
+        var buscar_numeros = in_busca.value;
+        var contagem_numeros = 0;
+        var momento_numero = [];
+        
+        if(buscar_numeros == "completa") {
+            for(var posicao = 0; posicao < numeros.length; posicao++){
+                var atual = numeros[posicao];
+    
+                if(in_numero.value == atual) {
+                    contagem_numeros++
+                }
+            }
+            div_msg.innerHTML = `O número ${in_numero.value} foi cadastrado ${contagem_numeros} vezes`;
+
+        }
+        else{
+            for(var posicao = 0; posicao < numeros.length; posicao++){
+                var numero = numeros[posicao];
+
+                if(in_numero.value == numero) {
+                    momento_numero.push(contador + 1);
+                    contagem_numeros++;
+
+                }
+            }
+            if(contagem_numeros > 0) {
+                div_msg.innerHTML = `Vezes cadastradas: ${contagem_numeros}`;
+
+                for(var contador = 0; contador < momento_numero.length; contador++){
+                    div_msg.innerHTML += ` encontrada na posição: ${momento_numero[contador]}<br>`;
+                }
+            }
+        }
+
+    }
+</script>

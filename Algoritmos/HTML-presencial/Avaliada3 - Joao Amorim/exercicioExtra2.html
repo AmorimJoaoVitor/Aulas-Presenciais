@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aluno</title>
+</head>
+<body>
+    <input type="text" placeholder="cadastre um aluno" id="in_aluno"><br>
+    <input type="text" placeholder="Pesquise pela letra inicial" id="in_letra"><br>
+    <button onclick="cadastrar()">Cadastrar aluno</button><br>
+    <button onclick="verificar()">Verificar alunos</button><br>
+    <div id="div_resultado"></div>
+
+</body>
+</html>
+<script>
+    var alunos = [];
+
+    function cadastrar(){
+        alunos.push(in_aluno.value);
+        console.log(alunos);
+    }
+
+    function verificar(){
+        var consulta = in_letra.value;
+        var contagem_repetidos = 0;
+    
+        for(var posicao = 0; posicao < alunos.length; posicao++){
+            var atual = alunos[posicao];
+            if(atual.startsWith(consulta)) {
+                contagem_repetidos++
+            }       
+        }
+
+        if (contagem_repetidos > 0) {
+            div_resultado.innerHTML = `Foram encontrados ${contagem_repetidos} alunos, com a inicial ${consulta}`;
+        }
+        else{
+            div_resultado.innerHTML = "Não foram encontrados";
+        }
+    }
+
+</script>
+
+<!-- function analisar() {
+        var frase = in_frase.value;
+
+        var quantas_letras = frase.length;
+        v_letras.innerHTML = quantas_letras;
+
+        var comeca_com_a = frase.startsWith('a' || 'A');
+        v_comeca_a.innerHTML = comeca_com_a;
+    } -->

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>filmes</title>
+</head>
+
+<body>
+    <input type="text" placeholder="Digite um filme" id="in_filme"><br>
+    <button onclick="verificarRepetidos()">Verificar duplicidade</button><br>
+    <button onclick="cadastrar()">Cadastrar Filme</button><br>
+    <div id="div_resultado"></div>
+</body>
+
+</html>
+
+<script>
+    var filmes = [];
+
+    function cadastrar() {
+        filmes.push(in_filme.value);
+        console.log(filmes);
+    }
+
+    function verificarRepetidos() {
+        var consulta = in_filme.value;
+        var contagem_repetidos = 0;
+
+        for (var contador = 0; contador < filmes.length; contador++) {
+            var atual = filmes[contador];
+
+            if (consulta == atual){
+                contagem_repetidos++;
+            }
+        }
+        
+       alert(`Você cadastrou esse filme ${contagem_repetidos} vezes`);
+        
+    }
+</script>
