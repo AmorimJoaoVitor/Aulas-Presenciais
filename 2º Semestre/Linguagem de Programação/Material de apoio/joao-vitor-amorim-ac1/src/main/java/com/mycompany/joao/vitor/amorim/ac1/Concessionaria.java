@@ -33,6 +33,13 @@ import java.util.concurrent.ThreadLocalRandom;
  * Dono - Financeiro, Recursos Humanos e estoque, Gerente - Recursos Humanos e
  * estoque Vendedor - estoque.
  *
+ * Crie também uma funcionalidade que o vendedor poderá consultar o valor das
+ * parcelas de um carro, para facilitar o processo de venda e ajudar o vendedor.
+ *
+ * O vendedor digitará o preço do veículo e em seguida a quantidade de parcelas.
+ *
+ * A baixo exiba o valor de cada parcela e a quantidade das parcelas.
+ *
  *
  *
  * Sobre a roleta em que o cliente ganhará o prêmio, deverá ter:
@@ -67,10 +74,53 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class Concessionaria {
 
+    public static void mostrarAcessos(String user) {
+        System.out.println("-------------------------------");
+        switch (user) {
+            case "dono":
+                System.out.print("Financeiro, ");
+            case "gerente":
+                System.out.print("Recursos Humanos e ");
+            case "vendedor":
+                System.out.println("estoque.");
+                System.out.println("-------------------------------");
+                break;
+        }
+    }
+
+    public static Boolean verificadorDeLogin(String user, String password, String contribuitorName) {
+        Boolean sessionStarted = false;
+
+        do {
+            if ("dono".equals(user) && "donodetudo".equals(password)) {
+                System.out.println(String.format("Olá %s, você entrou com o perfil de dono", contribuitorName));
+                sessionStarted = true;
+            } else if ("gerente".equals(user) && "bosschegou".equals(password)) {
+                System.out.println(String.format("Olá %s, você entrou com o perfil de gerente", contribuitorName));
+                sessionStarted = true;
+            } else if ("vendedor".equals(user) && "partiubatermeta".equals(password)) {
+                System.out.println(String.format("Olá %s, você entrou com o perfil de vendedor", contribuitorName));
+                sessionStarted = true;
+            } else {
+                System.out.println("Login inválido, por favor digite um login válido");
+                break;
+
+            }
+        } while (!sessionStarted);
+        return sessionStarted;
+    }
+
+    public static Double valorParcela(Double carPrice, Integer quantidadeParcelas) {
+        Double valorParcela;
+        valorParcela = carPrice / quantidadeParcelas;
+        return valorParcela;
+    }
+
     public static void main(String[] args) {
+
         Scanner input = new Scanner(System.in);
-        String contribuitorName, user, password, customerName, carNameForDraw, option;
-        Integer attemps = 0, drawNumberCar, rouletteDrawNumber, round;
+        String contribuitorName, user, password, customerName, carNameForDraw, option, enter;
+        Integer quantidadeParcelas, attemps = 0, drawNumberCar, rouletteDrawNumber;
         Double carPrice;
         Boolean sessionStarted = false, validAttemps = true;
 
@@ -86,37 +136,33 @@ public class Concessionaria {
             System.out.println("Senha");
             password = input.nextLine();
 
-            if ("dono".equals(user) && "donodetudo".equals(password)) {
-                System.out.println(String.format("Olá %s, você entrou com o perfil de dono", contribuitorName));
-                sessionStarted = true;
-            } else if ("gerente".equals(user) && "bosschegou".equals(password)) {
-                System.out.println(String.format("Olá %s, você entrou com o perfil de gerente", contribuitorName));
-                sessionStarted = true;
-            } else if ("vendedor".equals(user) && "partiubatermeta".equals(password)) {
-                System.out.println(String.format("Olá %s, você entrou com o perfil de vendedor", contribuitorName));
-                sessionStarted = true;
-            } else {
-                System.out.println("Login inválido, por favor digite um login válido");
-                sessionStarted = false;
-            }
-        } while (!sessionStarted);
+        } while (!verificadorDeLogin(user, password, contribuitorName));
+        sessionStarted = true;
         do {
             if (sessionStarted) {
                 System.out.println(String.format("digite roleta para inciar a roleta "
-                        + "\ndigite acessos para ver seus acessos"));
+                        + "\ndigite acessos para ver seus acessos"
+                        + "\nDigite parcelas para consultar as parcelas do carro"));
                 option = input.nextLine();
+
                 if ("acessos".equals(option)) {
-                    System.out.println("-------------------------------");
-                    switch (user) {
-                        case "dono":
-                            System.out.print("Financeiro, ");
-                        case "gerente":
-                            System.out.print("Recursos Humanos e ");
-                        case "vendedor":
-                            System.out.println("estoque.");
-                            System.out.println("-------------------------------");
-                            break;
-                    }
+                    mostrarAcessos(user);
+
+                } else if ("parcelas".equals(option)) {
+
+                    System.out.println("Ok! Primeiro informe o preço do carro:");
+                    carPrice = input.nextDouble();
+                    System.out.println("Agora a quantidade de parcelas desejadas");
+                    quantidadeParcelas = input.nextInt();
+
+                    System.out.println("----Calculando parcelas aguarde ...");
+
+                    System.out.println(String.format("As parcelas vão sair por %dX de R$ %.2f",
+                            quantidadeParcelas, valorParcela(carPrice, quantidadeParcelas)));
+                    
+                    sessionStarted = false;
+
+                    //sessionStarted = false;
                 } else if ("roleta".equals(option)) {
                     System.out.println("Ok! primeiro cadastre o nome do cliente");
                     customerName = input.nextLine();
@@ -131,7 +177,8 @@ public class Concessionaria {
 
                     if (carPrice < 20.000) {
                         System.out.println("Não terá direito a nenhuma rodada na roleta!");
-                    } else if (carPrice > 20.000 && carPrice < 30.000) {
+                        sessionStarted = false;
+                    } else if (carPrice >= 20.000 && carPrice < 30.000) {
                         System.out.println("terá direito a uma tentativa");
                         attemps = 1;
                     } else if (carPrice > 30.000 && carPrice < 40.000) {
@@ -143,6 +190,7 @@ public class Concessionaria {
                     }
 
                     do {
+
                         System.out.println("Escolha o slot de 1 a 10 da roleta onde você será o ganhador!");
                         drawNumberCar = input.nextInt();
                         attemps--;
@@ -157,12 +205,13 @@ public class Concessionaria {
                             System.out.println(String.format("Parabéns %s , você levou o %s como prêmio de"
                                     + " nossa roleta!", customerName, carNameForDraw));
                             validAttemps = false;
+
                         } else {
                             if (attemps != 0) {
 
                                 System.out.println(String.format("Não foi dessa vez, mas você ainda tem %d tentativa(s)", attemps));
                             } else {
-                                System.out.println("Suas tentativas acabaram.. ");
+                                System.out.println("Suas tentativas acabaram e você não ganhou nada.. ");
                                 validAttemps = false;
                             }
                         }
@@ -171,8 +220,6 @@ public class Concessionaria {
                     System.out.println("\n-------Finalizando roleta virtual-------");
                     sessionStarted = false;
                 }
-            } else {
-                System.out.println("Sessão não iniciada!");
             }
         } while (sessionStarted);
     }
